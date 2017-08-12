@@ -8,7 +8,7 @@ namespace HouseWorkOne
 {
     public class Arrays
     {
-        public static int Task1(int[] arr)
+        public static int Min(int[] arr)
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -23,7 +23,7 @@ namespace HouseWorkOne
             return min;
         }
 
-        public static int Task2(int[] arr)
+        public static int Max(int[] arr)
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -39,7 +39,7 @@ namespace HouseWorkOne
             return max;
         }
 
-        public static int Task3(int[] arr)
+        public static int IndexOfMin(int[] arr)
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -61,7 +61,7 @@ namespace HouseWorkOne
             return res;
         }
 
-        public static int Task4(int[] arr)
+        public static int IndexOfMax(int[] arr)
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -83,7 +83,7 @@ namespace HouseWorkOne
             return res;
         }
 
-        public static int Task5(int[] arr)
+        public static int SumOfOddsIndexesEl(int[] arr)
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -98,7 +98,7 @@ namespace HouseWorkOne
             return sum;
         }
 
-        public static void Task6(int[] arr)
+        public static void Reverse(int[] arr)
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -111,7 +111,7 @@ namespace HouseWorkOne
             }
         }
 
-        public static int Task7(int[] arr)
+        public static int CountOfOddsEl(int[] arr)
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -125,7 +125,7 @@ namespace HouseWorkOne
             return count;
         }
 
-        public static void Task8(int[] arr)
+        public static void SwapHalfes(int[] arr)
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -143,7 +143,7 @@ namespace HouseWorkOne
             }
         }
 
-        public static void Task9_1(int[] arr) //bubble sort
+        public static void BubbleSort(int[] arr) //bubble sort
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -162,7 +162,7 @@ namespace HouseWorkOne
             }
         }
 
-        public static void Task9_2(int[] arr) //select sort
+        public static void SelectSort(int[] arr) //select sort
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -191,7 +191,7 @@ namespace HouseWorkOne
             }
         }
 
-        public static void Task9_3(int[] arr) //insert sort
+        public static void InsertSort(int[] arr) //insert sort
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -209,7 +209,7 @@ namespace HouseWorkOne
             }
         }
 
-        private static int PartitionTask10_1(int[] arr, int start, int end)
+        private static int PartitionQuickSort(int[] arr, int start, int end)
         {
             int temp;
             int marker = start;
@@ -229,10 +229,10 @@ namespace HouseWorkOne
             return marker;
         }
 
-        public static int[] Task10_1(int[] arr, int start, int end) //quick sort
+        public static int[] QuickSort(int[] arr, int start, int end) //quick sort
         {
             if (arr == null)
-                throw new ArgumentNullException();
+                throw new NullReferenceException();
             if (start < 0 || end > arr.Length - 1)
                 throw new IndexOutOfRangeException();
             
@@ -240,13 +240,13 @@ namespace HouseWorkOne
             {
                 return new int[1];
             }
-            int pivot = PartitionTask10_1(arr, start, end);
-            Task10_1(arr, start, pivot - 1);
-            Task10_1(arr, pivot + 1, end);
+            int pivot = PartitionQuickSort(arr, start, end);
+            QuickSort(arr, start, pivot - 1);
+            QuickSort(arr, pivot + 1, end);
             return arr;
         }
 
-        private static int[] MergeTask10_2(int[] mass1, int[] mass2) 
+        private static int[] Merge(int[] mass1, int[] mass2) 
         {
             Int32 a = 0, b = 0;
             Int32[] merged = new int[mass1.Length + mass2.Length];
@@ -266,18 +266,18 @@ namespace HouseWorkOne
             return merged;
         }
 
-        public static int[] Task10_2(int[] arr)  //merge sort
+        public static int[] MergeSort(int[] arr)  //merge sort
         {
             if (arr == null)
                 throw new ArgumentNullException();
-            if (arr.Length == 1 || arr.Length == 0)
+            if (arr.Length <=1)
                 return arr;
 
             Int32 mid_point = arr.Length / 2;
-            return MergeTask10_2(Task10_2(arr.Take(mid_point).ToArray()), Task10_2(arr.Skip(mid_point).ToArray()));
+            return Merge(MergeSort(arr.Take(mid_point).ToArray()), MergeSort(arr.Skip(mid_point).ToArray()));
         }
 
-        public static void Task10_3(int[] arr) //shell sort
+        public static void ShellSort(int[] arr) //shell sort
         {
             if (arr == null)
                 throw new ArgumentNullException();
@@ -318,7 +318,7 @@ namespace HouseWorkOne
             return i;
         }
 
-        public static void Task10_4(int[] arr) //heap sort
+        public static void HeapSort(int[] arr) //heap sort
         {
             if (arr == null)
                 throw new ArgumentNullException();

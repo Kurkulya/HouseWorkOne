@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HouseWorkOne
 {
-    public class Cycles
+    public class Loops
     {
-        public static int Task1_1()
+        public static int EvensSumOf100()
         {
             int sum = 0;
 
@@ -19,7 +19,7 @@ namespace HouseWorkOne
             return sum;
         }
 
-        public static int Task1_2()
+        public static int EvensCountOf100()
         {
             int count = 0;
 
@@ -30,7 +30,7 @@ namespace HouseWorkOne
             return count;
         }
 
-        public static bool Task2(int num)
+        public static bool IsSimple(int num)
         {
             if (num <= 1)
                 return false;
@@ -49,7 +49,7 @@ namespace HouseWorkOne
             return res;
         }
 
-        public static int Task3_1(int num)   //binary search
+        public static int SqrtBinary(int num)   //binary search
         {
             if (num < 0)
                 throw new ArgumentException();
@@ -82,7 +82,7 @@ namespace HouseWorkOne
 
             return res;
         }
-        public static int Task3_2(int num)   //ordinary search
+        public static int SqrtOrdinary(int num)   //ordinary search
         {
             if (num < 0)
                 throw new ArgumentException();
@@ -105,7 +105,7 @@ namespace HouseWorkOne
             return res;
         }
 
-        public static long Task4(int num)
+        public static long Factorial(int num)
         {
             if (num < 0)
                 throw new ArgumentException();
@@ -115,12 +115,12 @@ namespace HouseWorkOne
             if (num == 0)
                 res = 1;
             else
-                res = num * Task4(num - 1);
+                res = num * Factorial(num - 1);
 
             return res;
         }
 
-        public static int Task5(int num)
+        public static int SumOfDigits(int num)
         {
             int sum = 0;
 
@@ -143,7 +143,7 @@ namespace HouseWorkOne
             return sum;
         }
 
-        public static int Task6(int num)
+        public static int ReverseDigits(int num)
         {
             int result = 0;
 

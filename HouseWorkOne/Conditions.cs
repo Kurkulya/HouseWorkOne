@@ -8,7 +8,7 @@ namespace HouseWorkOne
 {
     public class Conditions
     {
-        public static int Task1(int a, int b)
+        public static int DependingOnA(int a, int b)
         {
             int res = 0;
 
@@ -20,7 +20,7 @@ namespace HouseWorkOne
             return res;
         }
 
-        public static int Task2(int x, int y)
+        public static int Quarter(int x, int y)
         {
             if (x == 0 || y == 0)
                 throw new ArgumentException();
@@ -39,7 +39,7 @@ namespace HouseWorkOne
             return res;
         }
 
-        public static int Task3(int a, int b, int c)
+        public static int SumOf3(int a, int b, int c)
         {
             int sum = 0;
 
@@ -53,7 +53,7 @@ namespace HouseWorkOne
             return sum;
         }
 
-        public static int Task4(int a, int b, int c)
+        public static int MaxPlus3(int a, int b, int c)
         {
             int res = 0;
 
@@ -65,7 +65,7 @@ namespace HouseWorkOne
             return res;
         }
 
-        public static char Task5(int score)
+        public static char LiteralScore(int score)
         {
             if (score < 0 || score > 100)
                 throw new ArgumentOutOfRangeException();

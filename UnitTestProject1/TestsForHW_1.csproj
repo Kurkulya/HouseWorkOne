@@ -48,38 +48,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FunctionsTask1Test.cs" />
-    <Compile Include="FunctionsTask2Test.cs" />
-    <Compile Include="ConditionsTask2Test.cs" />
-    <Compile Include="ConditionsTask3Test.cs" />
-    <Compile Include="ConditionsTask4Test.cs" />
-    <Compile Include="ConditionsTask5Test.cs" />
-    <Compile Include="CyclesTask1_1Test.cs" />
-    <Compile Include="CyclesTask1_2Test.cs" />
-    <Compile Include="CyclesTask2Test.cs" />
-    <Compile Include="CyclesTask3_1Test.cs" />
-    <Compile Include="CyclesTask3_2Test.cs" />
-    <Compile Include="CyclesTask4Test.cs" />
-    <Compile Include="CyclesTask5Test.cs" />
-    <Compile Include="CyclesTask6Test.cs" />
-    <Compile Include="ArraysTask1Test.cs" />
-    <Compile Include="ArraysTask2Test.cs" />
-    <Compile Include="ArraysTask3Test.cs" />
-    <Compile Include="ArraysTask4Test.cs" />
-    <Compile Include="ArraysTask5Test.cs" />
-    <Compile Include="ArraysTask6Test.cs" />
-    <Compile Include="ArraysTask7Test.cs" />
-    <Compile Include="ArraysTask8Test.cs" />
-    <Compile Include="ArraysTask9_1Test.cs" />
-    <Compile Include="ArraysTask9_2Test.cs" />
-    <Compile Include="ArraysTask9_3Test.cs" />
-    <Compile Include="ArraysTask10_1Test.cs" />
-    <Compile Include="ArraysTask10_2Test.cs" />
-    <Compile Include="ArraysTask10_3Test.cs" />
-    <Compile Include="ArraysTask10_4Test.cs" />
-    <Compile Include="FunctionsTask3Test.cs" />
-    <Compile Include="FunctionsTask4Test.cs" />
-    <Compile Include="ConditionsTask1Test.cs" />
+    <Compile Include="ArraysTests.cs" />
+    <Compile Include="ConditionsTests.cs" />
+    <Compile Include="FunctionsTests.cs" />
+    <Compile Include="LoopsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

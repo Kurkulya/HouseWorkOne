@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Arrays.cs" />
     <Compile Include="Conditions.cs" />
-    <Compile Include="Cycles.cs" />
+    <Compile Include="Loops.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
