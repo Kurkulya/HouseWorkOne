@@ -58,32 +58,31 @@ namespace HouseWorkOne
                 throw new ArgumentException();
 
             int res = 0;
+            
+            int begin = 0;
+            int end = num;
+            while (end - begin > 1)
+            {      
+                int mid = (begin + end) / 2;
+                int cur = mid * mid;
 
-            int begin = 0, end = num;
-            while (begin < end)
-            {
-                int mid = begin + (end - begin) / 2;
-                if (mid * mid == num)
+                if (cur < num)
+                {
+                    begin = mid;
+                }
+                else if (cur > num)
+                {
+                    end = mid;
+                    res = mid;
+                }
+                else
                 {
                     res = mid;
                     break;
                 }
-                else if (mid * mid > num)
-                {
-                    end = mid;
-                }
-                else
-                {
-                    begin = mid + 1;
-                }
             }
-            if (end * end != num)
-            {
-                if ((end * end - num >= num - (end - 1) * (end - 1)))
-                    res = end - 1;
-                else
-                    res = end;
-            }
+            if (res * res > num)
+                res--;
 
             return res;
         }
