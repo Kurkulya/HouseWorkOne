@@ -31,7 +31,92 @@ namespace HouseWorkOne
             }
         }
 
-        public static long StrToNum(string str)
+        public static string NumToStr999(int num)
+        {
+            if (num < 0) throw new ArgumentException();
+            if (num == 0) return "zero";
+
+            string result = "";
+
+            string[] onesArray = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            string[] tenArray = { "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+            string[] decsArray = { "", "ten", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+
+            int hundreds = num / 100;
+            int decads = (num % 100) / 10;
+            int ones = num % 10;
+
+            if (hundreds != 0)
+                result += onesArray[hundreds] + " hundred ";
+            if (decads != 0)
+            {
+                if (decads != 1)
+                {
+                    result += decsArray[decads];
+                    if (ones != 0)
+                        result += "-" + onesArray[ones] + " ";
+                    else
+                        result += " ";
+                }
+                else
+                {
+                    result += tenArray[ones] + " ";
+                }
+            }
+            else
+            {
+                result += onesArray[ones] + " ";
+            }
+            result = result.Trim();
+
+            return result;
+        }
+
+        public static int StrToNum999(string str)
+        {
+            if (str == "zero") return 0;
+
+            string[][] library = new string[4][];
+            library[0] = new string[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            library[1] = new string[] { "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+            library[2] = new string[] { "", "ten", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+            library[3] = new string[] { "", "hundred" };
+
+            bool flag = false;
+
+            str = str.Replace('-', ' ');
+            Array strArray = str.Split(' ');
+
+            int res = 0;
+
+            foreach (string value in strArray)
+            {
+                foreach (string[] dimension in library)
+                {
+                    if (dimension.Contains(value))
+                    {
+                        int i = Array.IndexOf(dimension, value);
+                        flag = true;
+                        if (dimension[1] == "one")
+                            res += i;
+                        else if (dimension[1] == "eleven")
+                            res += 10 + i;
+                        else if (dimension[1] == "ten")
+                            res += 10 * i;
+                        else if (dimension[1] == "hundred")
+                            res *= 100;
+                        break;
+                    }
+                }
+                if (flag == false)
+                    throw new ArgumentException();
+                flag = false;
+            }
+
+            return res;
+        }
+
+        public static long StrToNumBillions(string str)
         {
             if (str == "zero") return 0;
 
@@ -42,28 +127,44 @@ namespace HouseWorkOne
             library[3] = new string[] { "", "thousand", "million", "billion" };
             library[4] = new string[] { "", "hundred"};
 
-            //char[] temp = str.ToCharArray();
             bool flag = false;
 
             str = str.Replace('-', ' ');
             Array strArray = str.Split(' ');
-            Array.Reverse(strArray);
 
-            Stack<long> result = new Stack<long>();
+            long tempRes = 0;
+            long result = 0;
 
             foreach(string value in strArray)
-            {       
-                foreach(string[] dimension in library)
-                {
+            {              
+                foreach (string[] dimension in library)
+                {                  
                     if (dimension.Contains(value))
                     {
                         int i = Array.IndexOf(dimension,value);
                         flag = true;
-                        if (dimension[1] == "one") result.Push(i);
-                        else if (dimension[1] == "eleven") result.Push(10 + i);
-                        else if (dimension[1] == "ten") result.Push(10 * i);
-                        else if (dimension[1] == "hundred") result.Push(100);
-                        else if (dimension[1] == "thousand") result.Push(-1*(int)Math.Pow(1000,i));
+                        if (dimension[1] == "one")
+                        {
+                            tempRes += i;
+                        }
+                        else if (dimension[1] == "eleven")
+                        {
+                            tempRes += 10 + i;
+                        }
+                        else if (dimension[1] == "ten")
+                        {
+                            tempRes += 10 * i;
+                        }
+                        else if (dimension[1] == "hundred")
+                        {
+                            tempRes *= 100;
+                        }
+                        else if (dimension[1] == "thousand")
+                        {
+                            tempRes *= (int)Math.Pow(1000, i);
+                            result += tempRes;
+                            tempRes = 0;
+                        }
                         break;
                     }
                 }
@@ -71,33 +172,11 @@ namespace HouseWorkOne
                     throw new ArgumentException();
                 flag = false;
             }
-
-            long tempSum = 0;
-            long resSum = 0;
-            long el = 0;
-            while(result.Count != 0)
-            {
-                el = result.Pop();
-                if (el >= 0)
-                {
-                    if (el != 100)
-                        tempSum += el;
-                    else
-                        tempSum *= el;
-                }
-                else
-                {
-                    tempSum *= (-1) * el;
-                    resSum += tempSum;
-                    tempSum = 0;
-                }
-            }
-            resSum += tempSum;
-
-            return resSum;
+            result += tempRes;
+            return result;
         }
 
-        public static string NumToStr(long num)
+        public static string NumToStrBillions(long num)
         {
             if (num < 0) throw new ArgumentException();
             if (num == 0) return "zero";
@@ -107,66 +186,48 @@ namespace HouseWorkOne
             string[] onesArray = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
             string[] tenArray = { "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
             string[] decsArray = { "", "ten", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+            string[] thousandsArray = { "billion ", "million ", "thousand ", ""};
 
-            int[] value = { 0,0,0,0,0,0,0,0,0,0,0,0};
-
-            string billions = "";
-            string millions = "";
-            string thousands = "";
-            string other = "";
-            string[] dimensions = { billions, millions, thousands, other };
-
-            string str = num.ToString();
-            for (int i = 12 - str.Length; i < 12; i++)
-                value[i] = (int)Char.GetNumericValue((str[i-(12 - str.Length)]));
-
+            long drop = 1;
             for (int j = 0; j < 4; j++)
             {
-                int hundreds = value[3 * j];
-                int decads = value[3 * j + 1];
-                int ones = value[3 * j + 2];
+                long div = (long)Math.Pow(1000, 3 - j);
+                int tempNum = Convert.ToInt32(num / div);
+
+                int hundreds = tempNum / 100;
+                int decads = (tempNum % 100) / 10;
+                int ones = tempNum % 10;
 
                 if (hundreds != 0)
-                    dimensions[j] += onesArray[hundreds] + " hundred ";
-
+                {
+                    result += onesArray[hundreds] + " hundred ";
+                }
                 if (decads != 0)
                 {
                     if (decads != 1)
                     {
-                        dimensions[j] += decsArray[decads];
+                        result += decsArray[decads];
                         if (ones != 0)
-                            dimensions[j] += "-" + onesArray[ones] + " ";
+                            result += "-" + onesArray[ones] + " ";
                         else
-                            dimensions[j] += " ";
+                            result += " ";
                     }
                     else
                     {
-                        dimensions[j] += tenArray[ones] + " ";
+                        result += tenArray[ones] + " ";
                     }
                 }
                 else
                 {
-                    dimensions[j] += onesArray[ones] + " ";
+                    result += onesArray[ones] + " ";
                 }
                 if (hundreds + decads + ones != 0)
                 {
-                    switch (j)
-                    {
-                        case 0:
-                            dimensions[j] += "billion ";
-                            continue;
-                        case 1:
-                            dimensions[j] += "million ";
-                            continue;
-                        case 2:
-                            dimensions[j] += "thousand ";
-                            continue;
-                        case 3:
-                            break;
-                    }
+                    result += thousandsArray[j];
                 }
+                num -= tempNum * div;
             }
-            result = string.Join("", dimensions).Trim(' ');
+            result = result.Trim(' ');
 
             return result;
         }
