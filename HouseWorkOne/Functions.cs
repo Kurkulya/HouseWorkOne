@@ -188,7 +188,6 @@ namespace HouseWorkOne
             string[] decsArray = { "", "ten", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety" };
             string[] thousandsArray = { "billion ", "million ", "thousand ", ""};
 
-            long drop = 1;
             for (int j = 0; j < 4; j++)
             {
                 long div = (long)Math.Pow(1000, 3 - j);
