@@ -240,7 +240,7 @@ namespace TestsForHW_1
         public void QuickSortEx_Null()
         {
             int[] arr = null;
-            Arrays.QuickSort(arr,0,arr.Length-1);
+            Arrays.QuickSort(arr,0,-1);
         }
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]

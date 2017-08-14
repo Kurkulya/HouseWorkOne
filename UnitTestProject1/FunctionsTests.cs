@@ -2,7 +2,7 @@
 using HouseWorkOne;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTestProject1
+namespace TestsForHW_1
 {
     [TestClass]
     public class FunctionsTests

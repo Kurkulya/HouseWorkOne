@@ -43,6 +43,8 @@ namespace TestsForHW_1
         [DataRow(0, 0)]
         [DataRow(25, 5)]
         [DataRow(40, 6)]
+        [DataRow(16, 4)]
+        [DataRow(101, 10)]
         public void SqrtBinaryTest(int a, int res)
         {
             Assert.AreEqual(res,Loops.SqrtBinary(a));
