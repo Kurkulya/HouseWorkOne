@@ -57,10 +57,13 @@ namespace HouseWorkOne
         {
             int res = 0;
 
-            if (a * b * c > a + b + c)
-                res = (a * b * c) + 3;
+            int sum1 = a * b * c;
+            int sum2 = a + b + c;
+
+            if (sum1 > sum2)
+                res = sum1 + 3;
             else
-                res = (a + b + c) + 3;
+                res = sum2 + 3;
 
             return res;
         }

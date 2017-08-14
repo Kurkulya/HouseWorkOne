@@ -18,8 +18,11 @@ namespace HouseWorkOne
             int min = arr[0];
 
             foreach (int i in arr)
+            {
                 if (i < min)
                     min = i;
+            }
+
             return min;
         }
 
@@ -33,8 +36,10 @@ namespace HouseWorkOne
             int max = arr[0];
 
             foreach (int i in arr)
+            {
                 if (i > max)
                     max = i;
+            }
 
             return max;
         }
@@ -93,7 +98,9 @@ namespace HouseWorkOne
             int sum = 0;
 
             for (int i = 1; i < arr.Length; i += 2)
+            {
                 sum += arr[i];
+            }
 
             return sum;
         }
@@ -119,8 +126,10 @@ namespace HouseWorkOne
             int count = 0;
 
             foreach (int i in arr)
+            {
                 if (i % 2 != 0)
                     count++;
+            }
 
             return count;
         }
@@ -137,7 +146,9 @@ namespace HouseWorkOne
                 {
                     int temp = arr[0];
                     for (int i = 0; i < len - 1; i++)
+                    {
                         arr[i] = arr[i + 1];
+                    }
                     arr[len - 1] = temp;
                 }
             }
@@ -253,15 +264,19 @@ namespace HouseWorkOne
             for (Int32 i = 0; i < mass1.Length + mass2.Length; i++)
             {
                 if (b < mass2.Length && a < mass1.Length)
+                {
                     if (mass1[a] > mass2[b])
                         merged[i] = mass2[b++];
                     else //if int go for
                         merged[i] = mass1[a++];
+                }
                 else
+                {
                     if (b < mass2.Length)
-                    merged[i] = mass2[b++];
-                else
-                    merged[i] = mass1[a++];
+                        merged[i] = mass2[b++];
+                    else
+                        merged[i] = mass1[a++];
+                }
             }
             return merged;
         }
@@ -290,7 +305,10 @@ namespace HouseWorkOne
                 {
                     int value = arr[i];
                     for (j = i - step; (j >= 0) && (arr[j] > value); j -= step)
+                    {
                         arr[j + step] = arr[j];
+
+                    }
                     arr[j + step] = value;
                 }
                 step /= 2;
@@ -306,14 +324,19 @@ namespace HouseWorkOne
                 if (arr[2 * i + 1] < arr[2 * i + 2]) imax = 2 * i + 2;
                 else imax = 2 * i + 1;
             }
-            else imax = 2 * i + 1;
-            if (imax >= N) return i;
+            else
+            {
+                imax = 2 * i + 1;
+            }
+            if (imax >= N)
+                return i;
             if (arr[i] < arr[imax])
             {
                 buf = arr[i];
                 arr[i] = arr[imax];
                 arr[imax] = buf;
-                if (imax < N / 2) i = imax;
+                if (imax < N / 2)
+                    i = imax;
             }
             return i;
         }

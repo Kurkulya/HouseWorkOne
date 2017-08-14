@@ -13,9 +13,10 @@ namespace HouseWorkOne
             int sum = 0;
 
             for (int i = 1; i <= 99; i++)
+            {
                 if (i % 2 == 0)
                     sum += i;
-
+            }
             return sum;
         }
 
@@ -24,8 +25,10 @@ namespace HouseWorkOne
             int count = 0;
 
             for (int i = 1; i <= 99; i++)
+            {
                 if (i % 2 == 0)
                     count++;
+            }
 
             return count;
         }
@@ -75,10 +78,12 @@ namespace HouseWorkOne
                 }
             }
             if (end * end != num)
+            {
                 if ((end * end - num >= num - (end - 1) * (end - 1)))
                     res = end - 1;
                 else
                     res = end;
+            }
 
             return res;
         }
@@ -131,8 +136,10 @@ namespace HouseWorkOne
             int len = num.ToString().Length;
             int k = 1;
 
-            for (int i = 0; i < len-1; i++)
+            for (int i = 0; i < len - 1; i++)
+            {
                 k *= 10;
+            }
 
             for (int i = k; drop != 0; i /= 10)
             {
@@ -154,8 +161,10 @@ namespace HouseWorkOne
             int len = num.ToString().Length;
             int k = 1;
 
-            for(int i = 0;i < len-1;i++)
+            for (int i = 0; i < len - 1; i++)
+            {
                 k *= 10;
+            }
 
             for (int i = k, count = 1; drop != 0; i /= 10, count *= 10)
             {
